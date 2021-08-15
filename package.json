@@ -1,0 +1,20 @@
+{
+  "name": "onetwotrie-alexa-replit",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "https://github.com/Vexcited/onetwotrie-alexa-replit",
+  "author": "Vexcited <vexitofficial@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "start:watch": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "ask-sdk": "^2.11.0",
+    "ask-sdk-express-adapter": "^2.11.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
