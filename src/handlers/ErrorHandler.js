@@ -3,11 +3,13 @@ const ErrorHandler = {
     return true;
   },
   handle(handlerInput, error) {
-    console.error(`Error handled: ${error.message}`);
+    console.error(`[ErrorHandler] Error handled.`, error.message);
+
+    const sayAgainSpeechText = "Sorry, can you say your command again, I didn\'t understand it.";
 
     return handlerInput.responseBuilder
-      .speak('Sorry, I don\'t understand your command. Please say it again.')
-      .reprompt('Sorry, I don\'t understand your command. Please say it again.')
+      .speak(sayAgainSpeechText)
+      .reprompt(sayAgainSpeechText)
       .getResponse();
   }
 };
