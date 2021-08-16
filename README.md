@@ -4,17 +4,7 @@
 
 Send instructions to your Discord account with this skill.
 
-We use the Discord API to perform the requests.
-
-Some features as "send message to"
-may not be always working.
-Why ? Users can have very hard to speak and
-understand name, so Alexa may not
-find them.
-Even though I made a normalizer to
-make people with username like this
-"𝚝 𝚜 𝚞༉" recognisable
-(eg.: (previous example) => tsu).
+We use the Discord Gateway / API to perform the requests.
 
 ## Why Discord
 
@@ -22,7 +12,11 @@ I don't know, maybe because I'm a super creative guy, full of ideas who is doing
 
 ## Usage
 
-
+For more easier usage with peoples name,
+I provided aliases support. To use it, copy `aliases.sample.json`
+to `aliases.json` and edit it. It works like this:
+`"AliasName": "UserId"`
+(eg.: `"Mikkel": "466655433415720992"`).
 
 ## Installation
 
@@ -36,6 +30,7 @@ and then `yarn start` to run the webserver.
 You can run `yarn start:watch` to use nodemon.
 
 ## Structure of `/src`
- - `handlers` => where we have every handlers for intents.
- - `public` => where we store static files for the website.
- - `index.js` => main code where we start webserver.
+
+- `handlers` => where we have every handlers for intents.
+- `public` => where we store static files for the website.
+- `index.js` => main code where we start webserver.

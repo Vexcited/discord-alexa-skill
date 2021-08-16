@@ -1,3 +1,5 @@
+const Alexa = require("ask-sdk-core");
+
 const CancelAndStopHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest"

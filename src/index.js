@@ -8,13 +8,13 @@ require("dotenv").config();
 console.clear();
 
 // Start Discord API client.
-require("./discordApi");
+const DiscordClient = require("./DiscordClient");
 
 // Handlers.
 const {
 	SessionEndedRequestHandler,
 	LaunchRequestHandler,
-	GetUnreadPingsHandler,
+	GetLatestPingsHandler,
 	CancelAndStopHandler,
 	HelpHandler,
 	ErrorHandler
@@ -24,8 +24,8 @@ const app = express();
 const skillBuilder = Alexa.SkillBuilders.custom()
 	.addRequestHandlers(
 		SessionEndedRequestHandler,
-		LaunchRequestHandler,
-		GetUnreadPingsHandler,
+		new LaunchRequestHandler(DiscordClient),
+		GetLatestPingsHandler,
 		CancelAndStopHandler,
 		HelpHandler,
 	)
