@@ -1,24 +1,29 @@
 const Alexa = require("ask-sdk-core");
+const DiscordWebClient = require("../DiscordWebClient");
 
-class LaunchRequestHandler {
-  constructor(discord) {
-    this.discord = discord;
-  }
-
+module.exports = {
   canHandle(handlerInput) {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === "LaunchRequest";
-  }
+  },
 
-  handle(handlerInput) {
-    console.info("[LaunchRequestHandler] Received.");
+  async handle(handlerInput) {
+    /* Debug */ console.info("[LaunchRequestHandler] -> Received from Alexa.");
 
-    const speechText = `Welcome ${this.discord.messageHandler.user.username} to the Discord unofficial API skill !`;
+    // Get current user to welcome.
+    const user = await DiscordWebClient.getCurrentLoggedUser();
 
+    // Build speech.
+    const speechText = `Welcome ${user.username} to the Discord unofficial API skill !`;
+
+    // Send welcome.
+    /* Debug */ console.info(`[LaunchRequestHandler] <- Sent welcome to ${user.username}.`);
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
-      .withSimpleCard(`Welcome ${this.discord.messageHandler.user.username} to Discord unofficial API skill. Ask me your latest messages !`, speechText)
+      .reprompt(`${user.username}, you can ask me anything, like maybe your last mention.`)
+      .withSimpleCard(
+        speechText,
+        "Ask me for anything !"
+      )
       .getResponse();
   }
 }
-module.exports = LaunchRequestHandler;

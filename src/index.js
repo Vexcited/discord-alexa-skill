@@ -7,25 +7,31 @@ require("dotenv").config();
 // Clear console when restarting skill.
 console.clear();
 
-// Start Discord API client.
-const DiscordClient = require("./DiscordClient");
-
 // Handlers.
 const {
-	SessionEndedRequestHandler,
+	// Start Handler.
 	LaunchRequestHandler,
-	GetLatestPingsHandler,
+
+	// Custom Intents.
+	LastMentionMarkAsReadHandler,
+	GetLastMentionHandler,
+
+	SessionEndedRequestHandler,
 	CancelAndStopHandler,
 	HelpHandler,
+
+	// Error Handler.
 	ErrorHandler
 } = require("./handlers");
 
 const app = express();
 const skillBuilder = Alexa.SkillBuilders.custom()
+	.withSkillId(process.env.ALEXA_SKILL_ID)
 	.addRequestHandlers(
 		SessionEndedRequestHandler,
-		new LaunchRequestHandler(DiscordClient),
-		GetLatestPingsHandler,
+		LaunchRequestHandler,
+		LastMentionMarkAsReadHandler,
+		GetLastMentionHandler,
 		CancelAndStopHandler,
 		HelpHandler,
 	)

@@ -1,7 +1,7 @@
 {
     "interactionModel": {
         "languageModel": {
-            "invocationName": "a. p. i. discord non officiel",
+            "invocationName": "a. p. i. discord non officielle",
             "intents": [
                 {
                     "name": "AMAZON.CancelIntent",
@@ -24,12 +24,13 @@
                     "samples": []
                 },
                 {
-                    "name": "GetLatestPings",
+                    "name": "GetLastMention",
                     "slots": [],
                     "samples": [
-                        "derniers pings",
-                        "mentions",
-                        "dernières mentions"
+                        "dernière mention",
+                        "dernier ping",
+                        "mention",
+                        "ping"
                     ]
                 }
             ],
