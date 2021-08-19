@@ -34,10 +34,10 @@ module.exports = {
 
         // Change start of speech depending on the type of mention.
         // Defaults if type = "message".
-        let additionalTextIfReplied = "";
-        console.log(lastMention.message_reference);
-        if (lastMention.type === "replied")
-            additionalTextIfReplied = `a reply to a message`;
+        // TODO: Add support for "replied" type. => When WS is made.
+        // let additionalTextIfReplied = "";
+        // if (lastMention.type === "replied")
+        //     additionalTextIfReplied = `It was a reply to a message.`;
 
         // Get current locale date in string format.
         const alexaLocale = Alexa.getLocale(handlerInput.requestEnvelope);
@@ -49,7 +49,7 @@ module.exports = {
         });
 
         // Build the speech.
-        const speechText = `Your last mention was ${additionalTextIfReplied} the ${stringDate} by ${lastMention.author}. The message content is "${mentionContent}". Say "mark last mention as read" to mark it as read.`;
+        const speechText = `Your last mention was the ${stringDate} by ${lastMention.author}. The message content is "${mentionContent}". Say "mark last mention as read" to mark it as read.`;
         const simpleCardTitle = `Your last mention by ${lastMention.author}.`;
         const simpleCardText = `${stringDate} - ${lastMention.author}: ${mentionContent}`;
 

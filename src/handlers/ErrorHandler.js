@@ -3,10 +3,12 @@ const ErrorHandler = {
     return true;
   },
   handle(handlerInput, error) {
-    console.error(`[ErrorHandler] Error handled.`, error);
+    console.info("[ErrorHandler] -> Handled an error.");
+    console.error(error);
 
-    const sayAgainSpeechText = "Sorry, can you say your command again, I didn\'t understand it.";
+    const sayAgainSpeechText = "An error occured, can you say your command again ?";
 
+    console.info("[ErrorHandler] <- Sent try again message.");
     return handlerInput.responseBuilder
       .speak(sayAgainSpeechText)
       .reprompt(sayAgainSpeechText)

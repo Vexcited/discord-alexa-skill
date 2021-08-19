@@ -7,7 +7,7 @@ module.exports = {
   },
 
   async handle(handlerInput) {
-    /* Debug */ console.info("[LaunchRequestHandler] -> Received from Alexa.");
+    /* Debug */ console.info("[LaunchRequestHandler] -> Received.");
 
     // Get current user to welcome.
     const user = await DiscordWebClient.getCurrentLoggedUser();

@@ -6,12 +6,13 @@ const HelpHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === "AMAZON.HelpIntent";
     },
     handle(handlerInput) {
-        const speechText = "You can ask me your latest pings !";
+        const speechText = "You can ask me your last mention and mark it as read, or send a message to something defined in the aliases file !";
+        const simpleCardTitle = "Help";
 
         return handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
-            .withSimpleCard("You can ask me your latest pings !", speechText)
+            .withSimpleCard(simpleCardTitle, speechText)
             .getResponse();
     }
 };

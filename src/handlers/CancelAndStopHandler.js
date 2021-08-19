@@ -7,11 +7,15 @@ const CancelAndStopHandler = {
                 || Alexa.getIntentName(handlerInput.requestEnvelope) === "AMAZON.StopIntent");
     },
     handle(handlerInput) {
-        const speechText = "See you next time !";
+        console.info("[IntentHandler][Cancel/Stop] -> Received.");
 
+        const speechText = "See you next time on Discord !";
+        const simpleCardTitle = "Bye !";
+
+        console.info("[IntentHandler][Cancel/Stop] <- Sent goodbye message.");
         return handlerInput.responseBuilder
             .speak(speechText)
-            .withSimpleCard("See you next time !", speechText)
+            .withSimpleCard(simpleCardTitle, speechText)
             .withShouldEndSession(true)
             .getResponse();
     }
