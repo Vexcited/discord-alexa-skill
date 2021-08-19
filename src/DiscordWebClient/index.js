@@ -9,13 +9,6 @@ const DEFAULT_OPTIONS = {
 };
 
 class DiscordWebClient {
-    static async getMessageFromId(channelId, messageId) {
-        const path = `${API_ENDPOINT}/channels/${channelId}/messages/${messageId}`;
-        const res = await fetch(path, DEFAULT_OPTIONS);
-        const data = await res.json();
-
-        return data;
-    }
 
     /**
      * Returns last mention.
@@ -31,16 +24,11 @@ class DiscordWebClient {
         const mention = data[0];
 
         // Get the mention type.
+        // For the reply, I can't retrieve the message datas from its ID.
+        // => Discord API doesn't authorize to use the route for message fetching.
+        // => TO-DO: Use Discord WS API to retrieve the message datas.
         let mentionType = "message"; // Message is type 0.
         if (mention.type === 19) mentionType = "replied";
-
-        // If message type is replied, get the replied message.
-        let repliedMessage = null;
-        if (mentionType === "replied") {
-            const repliedMessageId = mention.message_reference.message_id;
-            const repliedChannelId = mention.message_reference.channel_id;
-            repliedMessage = await this.getMessageFromId(repliedChannelId, repliedMessageId);
-        }
 
         // Search if the mention author have an alias.
         const aliasSearchResults = searchAlias(mention.author.id, "users");
@@ -56,7 +44,6 @@ class DiscordWebClient {
             type: mentionType,
             content: mention.content,
             mentions: mention.mentions,
-            message_reference: repliedMessage,
             timestamp: new Date(mention.timestamp)
         };
     }

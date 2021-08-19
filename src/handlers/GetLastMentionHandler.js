@@ -1,7 +1,6 @@
 const DiscordWebClient = require("../DiscordWebClient");
-const LanguageDetect = require("languagedetect");
 const Alexa = require("ask-sdk-core");
-const cleanTextEmotes = require("../utils/cleanTextEmotes");
+const fixSSMLContent = require("../utils/fixSSMLContent");
 const searchAlias = require("../utils/searchAlias");
 
 module.exports = {
@@ -31,23 +30,14 @@ module.exports = {
         // Some emotes are not supported by the language detection library.
         // And they are not supported by Alexa (she can't say "xD" or "<3").
         // So we replace them by some text explaining them.
-        mentionContent = cleanTextEmotes(mentionContent);
-
-
-        // Adapt the Alexa's voice to the language of Alexa user.
-        // Defaults to en-US.
-
-        // Build the mention content speech.
-        const mentionContentWithLang = `<voice name="${mentionContentLangData.voiceName
-            }"><lang xml:lang="${mentionContentLangData.lang
-            }">${mentionContent}</lang></voice>`;
-
+        mentionContent = fixSSMLContent(mentionContent);
 
         // Change start of speech depending on the type of mention.
         // Defaults if type = "message".
         let additionalTextIfReplied = "";
+        console.log(lastMention.message_reference);
         if (lastMention.type === "replied")
-            additionalTextIfReplied = `a reply to your message in ${lastMention.message_reference.guild.name}`;
+            additionalTextIfReplied = `a reply to a message`;
 
         // Get current locale date in string format.
         const alexaLocale = Alexa.getLocale(handlerInput.requestEnvelope);
@@ -59,12 +49,12 @@ module.exports = {
         });
 
         // Build the speech.
-        const speechText = `Your last mention was ${additionalTextIfReplied} the ${stringDate} by ${lastMention.author}. ${additionalTextIfReplied} The message content is "${mentionContentWithLang}". Say "mark last mention as read" to mark it as read.`;
+        const speechText = `Your last mention was ${additionalTextIfReplied} the ${stringDate} by ${lastMention.author}. The message content is "${mentionContent}". Say "mark last mention as read" to mark it as read.`;
         const simpleCardTitle = `Your last mention by ${lastMention.author}.`;
         const simpleCardText = `${stringDate} - ${lastMention.author}: ${mentionContent}`;
 
         // Build the response.
-        /* Debug */ console.info(`[IntentHandler][GetLastMention] <- Sent a mention by ${lastMention.author}. Message content was in ${lng}`);
+        /* Debug */ console.info(`[IntentHandler][GetLastMention] <- Sent a mention by ${lastMention.author}.`);
         return handlerInput.responseBuilder
             .speak(speechText)
             .reprompt(speechText)
