@@ -6,13 +6,14 @@ const HelpHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === "AMAZON.HelpIntent";
     },
     handle(handlerInput) {
-        const speechText = "You can ask me your last mention and mark it as read, or send a message to something defined in the aliases file !";
-        const simpleCardTitle = "Help";
+        // Get Alexa locale language.
+        const languageForSpeech = Alexa.getLocale(handlerInput.requestEnvelope).split("-")[0];
+        const speechLanguage = require(`../languages/${languageForSpeech}.json`)["HelpHandler"];
 
         return handlerInput.responseBuilder
-            .speak(speechText)
-            .reprompt(speechText)
-            .withSimpleCard(simpleCardTitle, speechText)
+            .speak(speechLanguage.speechText)
+            .reprompt(speechLanguage.speechText)
+            .withSimpleCard(speechLanguage.simpleCardTitle, speechLanguage.speechText)
             .getResponse();
     }
 };

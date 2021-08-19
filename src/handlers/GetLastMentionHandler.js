@@ -49,8 +49,11 @@ module.exports = {
         });
 
         // Build the speech.
-        const speechText = `Your last mention was the ${stringDate} by ${lastMention.author}. The message content is "${mentionContent}". Say "mark last mention as read" to mark it as read.`;
-        const simpleCardTitle = `Your last mention by ${lastMention.author}.`;
+        const languageForSpeech = alexaLocale.split("-")[0];
+        const speechLanguage = require(`../languages/${languageForSpeech}.json`)["GetLastMentionIntent"];
+
+        const { simpleCardTitle } = speechLanguage;
+        const speechText = speechLanguage.speechText.replace("{mentionDate}", stringDate).replace("{mentionAuthor}", lastMention.author).replace("{mentionContent}", mentionContent);
         const simpleCardText = `${stringDate} - ${lastMention.author}: ${mentionContent}`;
 
         // Build the response.

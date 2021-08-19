@@ -6,12 +6,14 @@ const ErrorHandler = {
     console.info("[ErrorHandler] -> Handled an error.");
     console.error(error);
 
-    const sayAgainSpeechText = "An error occured, can you say your command again ?";
+    // Get Alexa locale language.
+    const languageForSpeech = alexaLocale.split("-")[0];
+    const { speechText } = require(`../languages/${languageForSpeech}.json`)["ErrorHandler"];
 
     console.info("[ErrorHandler] <- Sent try again message.");
     return handlerInput.responseBuilder
-      .speak(sayAgainSpeechText)
-      .reprompt(sayAgainSpeechText)
+      .speak(speechText)
+      .reprompt(speechText)
       .getResponse();
   }
 };

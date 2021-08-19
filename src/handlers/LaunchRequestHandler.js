@@ -12,17 +12,22 @@ module.exports = {
     // Get current user to welcome.
     const user = await DiscordWebClient.getCurrentLoggedUser();
 
+    // Get Alexa locale language.
+    const languageForSpeech = Alexa.getLocale(handlerInput.requestEnvelope).split("-")[0];
+    const speechLanguage = require(`../languages/${languageForSpeech}.json`)["LaunchRequest"];
+
     // Build speech.
-    const speechText = `Welcome ${user.username} to the Discord unofficial API skill !`;
+    const speechText = speechLanguage.speechText.replace("{username}", user.username);
+    const repromptText = speechLanguage.repromptText.replace("{username}", user.username);
 
     // Send welcome.
     /* Debug */ console.info(`[LaunchRequestHandler] <- Sent welcome to ${user.username}.`);
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(`${user.username}, you can ask me anything, like maybe your last mention.`)
+      .reprompt(repromptText)
       .withSimpleCard(
         speechText,
-        "Ask me for anything !"
+        speechLanguage.simpleCardText
       )
       .getResponse();
   }

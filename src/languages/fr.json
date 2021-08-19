@@ -1,0 +1,33 @@
+{
+    "LaunchRequest": {
+        "speechText": "Bievenue {username} au skill non officielle de l'API Discord !",
+        "repromptText": "{username}, vous pouvez me demander n'importe quoi, comme par exemple, la dernière mention reçu.",
+        "simpleCardText": "Demandez moi ce que vous voulez !"
+    },
+    "HelpHandler": {
+        "speechText": "Vous pouvez me demander la dernière metion que vous avez reçu et de la marquer comme lue, ou d'envoyer un message à un channel ou un ami défini dans les alias.",
+        "simpleCardTitle": "Aide"
+    },
+    "ErrorHandler": {
+        "speechText": "Une erreur s'est produite, pouvez-vous dire votre commande une nouvelle fois ?"
+    },
+    "CancelAndStopHandler": {
+        "speechText": "À la prochaine, sur Discord !",
+        "simpleCardTitle": "Au revoir !"
+    },
+    "GetLastMentionIntent": {
+        "speechText": "Votre dernière mention date du {mentionDate} et son auteur est {mentionAuthor}. Le contenu du message est \"{mentionContent}\". Dîtes \"marque la dernière mention comme lue\" pour la marquer comme lue.",
+        "simpleCardTitle": "Votre dernière mention"
+    },
+    "LastMentionMarkAsReadIntent": {
+        "success": {
+            "speechText": "Votre dernière mention par {mentionAuthor} a bien été marquée comme lue !",
+            "simpleCardTitle": "Mention marquée comme lue",
+            "simpleCardText": "Mention par {mentionAuthor} marquée comme."
+        },
+        "error": {
+            "speechText": "Désolé, je n'ai pas pu marquer comme lu votre dernière mention.",
+            "simpleCardTitle": "Une erreur s'est produite"
+        }
+    }
+}

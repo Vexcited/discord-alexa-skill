@@ -1,0 +1,33 @@
+{
+    "LaunchRequest": {
+        "speechText": "Welcome {username} to the Discord unofficial API skill !",
+        "repromptText": "{username}, you can ask me anything, like maybe your last mention.",
+        "simpleCardText": "Ask me for anything !"
+    },
+    "HelpHandler": {
+        "speechText": "You can ask me your last mention and mark it as read, or send a message to something defined in the aliases file !",
+        "simpleCardTitle": "Help"
+    },
+    "ErrorHandler": {
+        "speechText": "An error occured, can you say your command again ?"
+    },
+    "CancelAndStopHandler": {
+        "speechText": "See you next time on Discord !",
+        "simpleCardTitle": "Bye !"
+    },
+    "GetLastMentionIntent": {
+        "speechText": "Your last mention was the {mentionDate} by {mentionAuthor}. The message content is \"{mentionContent}\". Say \"mark last mention as read\" to mark it as read.",
+        "simpleCardTitle": "Your last mention"
+    },
+    "LastMentionMarkAsReadIntent": {
+        "success": {
+            "speechText": "Your last mention by {mentionAuthor} have been marked as read !",
+            "simpleCardTitle": "Mention marked as read",
+            "simpleCardText": "Mention by {mentionAuthor} marked as read."
+        },
+        "error": {
+            "speechText": "Sorry, I couldn't mark your last mention as read",
+            "simpleCardTitle": "An error occured"
+        }
+    }
+}

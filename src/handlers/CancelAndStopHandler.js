@@ -9,8 +9,8 @@ const CancelAndStopHandler = {
     handle(handlerInput) {
         console.info("[IntentHandler][Cancel/Stop] -> Received.");
 
-        const speechText = "See you next time on Discord !";
-        const simpleCardTitle = "Bye !";
+        const languageForSpeech = alexaLocale.split("-")[0];
+        const { speechText, simpleCardTitle } = require(`../languages/${languageForSpeech}.json`)["CancelAndStopHandler"];
 
         console.info("[IntentHandler][Cancel/Stop] <- Sent goodbye message.");
         return handlerInput.responseBuilder

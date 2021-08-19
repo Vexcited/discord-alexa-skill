@@ -24,13 +24,25 @@
                     "samples": []
                 },
                 {
-                    "name": "GetLastMention",
+                    "name": "GetLastMentionIntent",
                     "slots": [],
                     "samples": [
+                        "le dernier ping",
+                        "la dernière mention",
                         "dernière mention",
                         "dernier ping",
-                        "mention",
-                        "ping"
+                        "récupère le dernier ping",
+                        "récupère la dernière mention"
+                    ]
+                },
+                {
+                    "name": "LastMentionMarkAsReadIntent",
+                    "slots": [],
+                    "samples": [
+                        "supprime le dernier ping",
+                        "supprime la dernière mention",
+                        "marque la dernière mention comme lue",
+                        "marque la dernier ping comme lu"
                     ]
                 }
             ],

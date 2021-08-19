@@ -13,14 +13,18 @@ const LastMentionMarkAsReadHandler = {
         // Define final speech.
         let speechText = "", simpleCardText = "", simpleCardTitle = "";
 
+        // Get Alexa locale language.
+        const languageForSpeech = Alexa.getLocale(handlerInput.requestEnvelope).split("-")[0];
+        const speechLanguage = require(`../languages/${languageForSpeech}.json`)["LastMentionMarkAsReadIntent"];
+
         try {
             const lastMention = await DiscordWebClient.getLastMention();
             const { success } = await DiscordWebClient.clearLastMention(lastMention.id);
 
             if (success) {
-                speechText = `Your last mention by ${lastMention.author} have been marked as read !`;
-                simpleCardTitle = `Your last mention by ${lastMention.author}.`;
-                simpleCardText = `Mention by ${lastMention.author} marked as read.`;
+                speechText = speechLanguage.success.speechText.replace("{mentionAuthor}", lastMention.author);
+                simpleCardText = speechLanguage.success.simpleCardText.replace("{mentionAuthor}", lastMention.author);
+                simpleCardTitle = speechLanguage.success.simpleCardTitle;
 
                 console.info(`[IntentHandler][LastMentionMarkAsRead] <- Marked as read a mention by ${lastMention.author}.`);
             }
@@ -29,9 +33,9 @@ const LastMentionMarkAsReadHandler = {
             }
         }
         catch (error) {
-            speechText = "Sorry, I couldn't mark your last mention as read.";
-            simpleCardTitle = "An error occured.";
-            simpleCardText = "Sorry, I couldn't mark your last mention as read.";
+            speechText = speechLanguage.error.speechText;
+            simpleCardTitle = speechLanguage.error.simpleCardTitle;
+            simpleCardText = speechLanguage.error.speechText;
 
             console.info(`[IntentHandler][LastMentionMarkAsRead] <- Handled an error.`, error);
         }
