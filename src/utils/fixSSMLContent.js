@@ -5,12 +5,11 @@
 const fixSSMLContent = (text) => {
     let newText = text;
 
-    // Defining some emotes.
+    // Symbols to escape.
     const symols = ["<", ">"];
 
-    // Replace emotes with void.
+    // Escape symbols.
     symols.forEach(symbol => {
-        // Regex replace every symbol with void.
         newText = newText.replace(new RegExp(symbol, "g"), `\\${symbol}`);
     });
 
