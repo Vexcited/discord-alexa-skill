@@ -93,7 +93,7 @@ So you would say something like, `Alexa, open unofficial discord` or `Alexa, ope
 ### French
 
 Nom d'invocation: `a. p. i. discord non officielle` \
-Vous pourrez dire un truc du style, `Alexa, ouvre discord non officiel`.
+Vous pourrez dire un truc du style, `Alexa, ouvre le skill discord non officiel`.
 
 #### Envoyer un message
 
