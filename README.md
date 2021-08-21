@@ -17,10 +17,12 @@ doing original things. (..- no) ~
 
 ## Installation
 
-Clone, run `yarn` to install depedencies
-and then `yarn start` to run the webserver.
+Clone this repository and run `yarn` to install depedencies.
 
-You can run `yarn start:watch` to use nodemon.
+Then you can run `yarn start` to start the webserver, or
+`yarn start:watch` if you prefer use nodemon.
+
+### Create skill
 
 You can follow [this tutorial/template from Replit](https://blog.replit.com/replexa)
 to create your Alexa skill, and replace their repository by mine.
@@ -28,27 +30,34 @@ Copy `.env.sample` to `.env`, adjust it,
 point the skill endpoint to your repl URL,
 import intents and enjoy.
 
+### Intents and languages
+
 This skill **supports French and English**.
 To import them, go to Assets -> JSON Editor in Alexa,
-go to the `/AlexaSkillIntents` folder, and import
+go to the `/intents` folder, and import
 the JSON file that you want to Alexa.
 
 ## Aliases
 
-An alias system is provided to make people/channel/guild names more easier to say.
+An alias system is provided to make friends/channels name more easier to say.
 
-**When you need to DM someone, or get a channel, you'll need to call it by the
-alias name that you given to it.**
+**When you need to provide a friend/channel name, you'll need to provide the alias name that you given, not the name written in Discord. Otherwise, it will not recognize it because Alexa will only search the name in the aliases file.**
 
-### How
+### Create aliases file
 
 Copy `/aliases.sample.json` to `/aliases.json` and edit it.
 
 ### Structure
 
-It contains three parts: `"channels", "guilds", "users"`.
+It contains two parts (for the moment): `"channels", "users"`.
 
-In these parts you can give to a _thing_, an alias like this `"AliasName": "ThingId"`.
+In these parts you can give to a _thing_, an alias like this `"alias name": "ThingSnowflakeId"`.
+
+The most important thing is that the alias name **MUST** be **in lower case**.
+The another most important thing is for IDs. `users` IDs must be the User ID, not the Channel ID.
+For `channels`, you can give the Channel ID.
+
+> To get the User/Channel ID, first, make sure you have "Developer Mode" activated in your paramaters, then just right click on the user/channel, and click "Copy ID". On mobile, keep your finger on the channel/user and you'll see a menu, then click "Copy ID".
 
 ### Example
 
@@ -73,9 +82,33 @@ _You want to get access to your server, a text channel, and a private DM with a 
 ### English
 
 Invocation name: `unofficial discord a. p. i.`. \
-So, you would say `Alexa, open unofficial discord`.
+So you would say something like, `Alexa, open unofficial discord` or `Alexa, open discord api skill`.
+
+#### Send a message
+
+- `Send a message`, or `Send a message to a user|channel` to shortcut the first parameter.
+  Then you'll be asked for user|channel alias, then for the message content.
+
+#### Get and mark as read last mention/ping
+
+- `Get my last mention|ping` to read the latest mention you received.
+- `Mark as read my last mention` or `Clear last mention` to mark as read the latest mention you received.
 
 ### French
 
-Invocation name: `a. p. i. discord non officielle` \
-So, you would say `Alexa, ouvre discord non officiel`.
+Nom d'invocation: `a. p. i. discord non officielle` \
+Vous pourrez dire un truc du style, `Alexa, ouvre discord non officiel`.
+
+#### Envoyer un message
+
+- `Envoie un message`, ou `Envoie un message à un utilisateur|salon` pour éviter de préciser le
+  premier paramètre. Vous seront démandés, l'alias de l'utilisateur|du salon, et ensuite le contenu du message.
+
+#### Get and mark as read last mention/ping
+
+- `Get my last mention|ping` to read the latest mention you received.
+- `Mark as read my last mention` or `Clear last mention` to mark as read the latest mention you received.
+
+## Thanks for reading !
+
+You can contribute if you want ! Everything is in `/src`.

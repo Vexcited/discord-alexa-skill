@@ -29,5 +29,16 @@
             "speechText": "Sorry, I couldn't mark your last mention as read",
             "simpleCardTitle": "An error occured"
         }
+    },
+    "CreateMessageIntent": {
+        "success": {
+            "speechText": "Your message have been sent to {messageDestination} !",
+            "simpleCardTitle": "Message sent !",
+            "simpleCardText": "Message sent to {messageDestination}."
+        },
+        "error": {
+            "speechText": "Sorry, I couldn't send your message to {messageDestination} !",
+            "simpleCardTitle": "An error occured"
+        }
     }
 }

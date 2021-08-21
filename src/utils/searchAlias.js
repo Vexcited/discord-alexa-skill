@@ -15,7 +15,9 @@ const searchAlias = (id, type) => {
     for (const [alias, typeId] of Object.entries(typeAliases)) {
         if (id === typeId) {
             response.success = true;
-            response.alias = alias;
+
+            // Add a upper case letter to each first letter of the alias.
+            response.alias = alias.replace(/^\w/, c => c.toUpperCase());
         }
     }
 

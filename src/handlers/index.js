@@ -6,6 +6,8 @@ module.exports = {
 	GetLastMentionHandler: require("./GetLastMentionHandler"),
 	// LastMentionMarkAsReadIntent
 	LastMentionMarkAsReadHandler: require("./LastMentionMarkAsReadHandler"),
+	// CreateMessageIntent
+	CreateMessageHandler: require("./CreateMessageHandler"),
 
 	SessionEndedRequestHandler: require("./SessionEndedRequestHandler"),
 	CancelAndStopHandler: require("./CancelAndStopHandler"),

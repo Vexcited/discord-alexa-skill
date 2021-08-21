@@ -5,6 +5,7 @@ const HelpHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === "IntentRequest"
             && Alexa.getIntentName(handlerInput.requestEnvelope) === "AMAZON.HelpIntent";
     },
+
     handle(handlerInput) {
         // Get Alexa locale language.
         const languageForSpeech = Alexa.getLocale(handlerInput.requestEnvelope).split("-")[0];

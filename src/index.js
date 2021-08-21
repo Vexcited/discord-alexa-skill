@@ -15,6 +15,7 @@ const {
 	// Custom Intents.
 	LastMentionMarkAsReadHandler,
 	GetLastMentionHandler,
+	CreateMessageHandler,
 
 	SessionEndedRequestHandler,
 	CancelAndStopHandler,
@@ -32,6 +33,7 @@ const skillBuilder = Alexa.SkillBuilders.custom()
 		LaunchRequestHandler,
 		LastMentionMarkAsReadHandler,
 		GetLastMentionHandler,
+		CreateMessageHandler,
 		CancelAndStopHandler,
 		HelpHandler,
 	)
@@ -40,7 +42,7 @@ const skillBuilder = Alexa.SkillBuilders.custom()
 const skill = skillBuilder.create();
 const adapter = new ExpressAdapter(skill, true, true);
 
-// HTML
+// Serve static HTML on "GET /*". 
 app.use("/",
 	express.static(
 		path.resolve(`${__dirname}/public`)

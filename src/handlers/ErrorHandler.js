@@ -2,6 +2,7 @@ const ErrorHandler = {
   canHandle() {
     return true;
   },
+
   handle(handlerInput, error) {
     console.info("[ErrorHandler] -> Handled an error.");
     console.error(error);

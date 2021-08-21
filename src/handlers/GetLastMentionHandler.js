@@ -1,4 +1,4 @@
-const DiscordWebClient = require("../DiscordWebClient");
+const Discord = require("../utils/Discord");
 const Alexa = require("ask-sdk-core");
 const fixSSMLContent = require("../utils/fixSSMLContent");
 const searchAlias = require("../utils/searchAlias");
@@ -11,7 +11,7 @@ module.exports = {
 
     async handle(handlerInput) {
         /* Debug */ console.info("[IntentHandler][GetLastMention] -> Received.");
-        const lastMention = await DiscordWebClient.getLastMention();
+        const lastMention = await Discord.getLastMention();
         let mentionContent = lastMention.content;
 
         // Replace mentions IDs with names.

@@ -1,5 +1,6 @@
-const searchAlias = require("../utils/searchAlias");
+const searchAlias = require("./searchAlias");
 const fetch = require("node-fetch");
+const aliases = require("../../aliases.json");
 
 const API_ENDPOINT = "https://discord.com/api/v9";
 const DEFAULT_OPTIONS = {
@@ -74,6 +75,65 @@ class DiscordWebClient {
         const data = await res.json();
 
         return data;
+    }
+
+    /**
+     * Send a message to specified user (or channel) alias with given content.
+     */
+    static async sendMessage(alias, type, content) {
+        let channelId = "";
+
+        // If we want to DM a user, we need to get
+        // the channel ID from the user ID to send the message.
+        if (type === "users") {
+            const userId = aliases[type][alias];
+
+            // Open DM channel to get channelId.
+            const channelPath = `${API_ENDPOINT}/users/@me/channels`;
+            const channelResponse = await fetch(channelPath, {
+                method: "POST", // Open the DM channel.
+                body: JSON.stringify({
+                    recipient_id: userId // User ID from alias.
+                }),
+                headers: {
+                    "Authorization": process.env.DISCORD_TOKEN,
+                    "Content-Type": "application/json"
+                }
+            });
+
+            // Get the response data.
+            // If successful, get the Channel ID.
+            const channelData = await channelResponse.json();
+            if (channelResponse.status === 200) {
+                channelId = channelData.id;
+            }
+            else {
+                throw new Error(
+                    `Error while opening DM channel to user ${alias}\n`
+                    + `Status: ${channelResponse.status}\n`
+                    + `Errors: ${JSON.stringify(channelData, null, 4)}`
+                );
+            }
+        }
+        else if (type === "channels") {
+            channelId = aliases[type][alias];
+        }
+
+        // Now we have the channel ID, we can send the message.
+        const path = `${API_ENDPOINT}/channels/${channelId}/messages`;
+        const options = {
+            method: "POST",
+            body: JSON.stringify({
+                content
+            }),
+            headers: {
+                "Authorization": process.env.DISCORD_TOKEN,
+                "Content-Type": "application/json"
+            }
+        }
+
+        const response = await fetch(path, options);
+        return response.status === 200;
     }
 }
 

@@ -4,6 +4,7 @@ const SessionEndedRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === "SessionEndedRequest";
     },
+
     handle(handlerInput) {
         console.info("[SessionEnded] <- Done !");
 

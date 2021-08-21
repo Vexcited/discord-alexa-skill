@@ -5,7 +5,7 @@
         "simpleCardText": "Demandez moi ce que vous voulez !"
     },
     "HelpHandler": {
-        "speechText": "Vous pouvez me demander la dernière metion que vous avez reçu et de la marquer comme lue, ou d'envoyer un message à un channel ou un ami défini dans les alias.",
+        "speechText": "Vous pouvez me demander la dernière mention que vous avez reçu et de la marquer comme lue, ou d'envoyer un message à un channel ou un ami défini dans les alias.",
         "simpleCardTitle": "Aide"
     },
     "ErrorHandler": {
@@ -27,6 +27,17 @@
         },
         "error": {
             "speechText": "Désolé, je n'ai pas pu marquer comme lu votre dernière mention.",
+            "simpleCardTitle": "Une erreur s'est produite"
+        }
+    },
+    "CreateMessageIntent": {
+        "success": {
+            "speechText": "Votre message a bien été envoyé à {messageDestination} !",
+            "simpleCardTitle": "Message envoyé !",
+            "simpleCardText": "Message envoyé à {messageDestination}."
+        },
+        "error": {
+            "speechText": "Désolé, je n'ai pas réussi à envoyé votre message à {messageDestination} !",
             "simpleCardTitle": "Une erreur s'est produite"
         }
     }

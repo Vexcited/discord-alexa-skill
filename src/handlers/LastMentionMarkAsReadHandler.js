@@ -1,5 +1,5 @@
 const Alexa = require("ask-sdk-core");
-const DiscordWebClient = require("../DiscordWebClient");
+const Discord = require("../utils/Discord");
 
 const LastMentionMarkAsReadHandler = {
     canHandle(handlerInput) {
@@ -18,8 +18,8 @@ const LastMentionMarkAsReadHandler = {
         const speechLanguage = require(`../languages/${languageForSpeech}.json`)["LastMentionMarkAsReadIntent"];
 
         try {
-            const lastMention = await DiscordWebClient.getLastMention();
-            const { success } = await DiscordWebClient.clearLastMention(lastMention.id);
+            const lastMention = await Discord.getLastMention();
+            const { success } = await Discord.clearLastMention(lastMention.id);
 
             if (success) {
                 speechText = speechLanguage.success.speechText.replace("{mentionAuthor}", lastMention.author);
