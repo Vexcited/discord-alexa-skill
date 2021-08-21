@@ -27,26 +27,177 @@
                     "name": "GetLastMentionIntent",
                     "slots": [],
                     "samples": [
-                        "le dernier ping",
-                        "la dernière mention",
-                        "dernière mention",
-                        "dernier ping",
+                        "lis la dernière mention reçue",
+                        "lis le dernier ping reçu",
+                        "récupère la dernière mention reçue",
+                        "récupère le dernier ping reçu",
+                        "récupère la dernière mention",
                         "récupère le dernier ping",
-                        "récupère la dernière mention"
+                        "dernière mention",
+                        "dernier ping"
                     ]
                 },
                 {
                     "name": "LastMentionMarkAsReadIntent",
                     "slots": [],
                     "samples": [
-                        "supprime le dernier ping",
+                        "supprime la dernière mention reçue",
+                        "supprime le dernier ping reçu",
                         "supprime la dernière mention",
+                        "supprime le dernier ping",
+                        "marque la dernière mention reçue comme lue",
+                        "marque la dernier ping reçu comme lu",
                         "marque la dernière mention comme lue",
                         "marque la dernier ping comme lu"
                     ]
+                },
+                {
+                    "name": "CreateMessageIntent",
+                    "slots": [
+                        {
+                            "name": "type",
+                            "type": "MessageDestinationType",
+                            "samples": [
+                                "utilisateur",
+                                "salon"
+                            ]
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "multipleValues": {
+                                "enabled": false
+                            }
+                        },
+                        {
+                            "name": "content",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "envoie un message à un {type}",
+                        "envoie un message",
+                        "crée un message pour un {type}",
+                        "crée un message"
+                    ]
                 }
             ],
-            "types": []
-        }
+            "types": [
+                {
+                    "name": "MessageDestinationType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "utilisateur",
+                                "synonyms": [
+                                    "ami",
+                                    "amie",
+                                    "fille",
+                                    "gars",
+                                    "mec",
+                                    "pote",
+                                    "copain",
+                                    "copine"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "salon"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CreateMessageIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.593451559498"
+                    },
+                    "slots": [
+                        {
+                            "name": "type",
+                            "type": "MessageDestinationType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.593451559498.1194728785278"
+                            }
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": true,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "confirmation": "Confirm.Slot.593451559498.701527985058",
+                                "elicitation": "Elicit.Slot.593451559498.701527985058"
+                            }
+                        },
+                        {
+                            "name": "content",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.593451559498.776954703107"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.593451559498",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Voulez vous envoyer {content} à {name} ?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.593451559498.1194728785278",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Voulez vous envoyer un message à un utilisateur ou à un salon ?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.593451559498.701527985058",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "À quel {type} souhaitez-vous envoyer ce message ?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.593451559498.701527985058",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Voulez-vous envoyer un message à {name} ?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.593451559498.776954703107",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Qu'est-ce que le message doit contenir ?"
+                    }
+                ]
+            }
+        ]
     }
 }
