@@ -81,13 +81,31 @@ class DiscordWebClient {
      * Send a message to specified user (or channel) alias with given content.
      */
     static async sendMessage(alias, type, content) {
-        let channelId = "";
+        // TO-DO: Better fix for translation problem.
+        if (type === "utilisateurs") type = "users";
+        if (type === "salons") type = "channels";
+
+        // Defining variables.
+        let userId = "", channelId = "";
+
+        // Foreach the aliases and found the one
+        // that correspond to the given name.
+        // (we also lower case the aliases for better results).
+        for (const aliasName in aliases[type]) {
+            // If aliases match.
+            if (aliasName.toLowerCase() === alias) {
+                if (type === "users") { // If user, save ID for getting the Channel ID.
+                    userId = aliases[type][aliasName];
+                }
+                else if (type === "channels") { // If channel, save ID for sending the message.
+                    channelId = aliases[type][aliasName];
+                }
+            }
+        }
 
         // If we want to DM a user, we need to get
         // the channel ID from the user ID to send the message.
         if (type === "users") {
-            const userId = aliases[type][alias];
-
             // Open DM channel to get channelId.
             const channelPath = `${API_ENDPOINT}/users/@me/channels`;
             const channelResponse = await fetch(channelPath, {
@@ -114,9 +132,6 @@ class DiscordWebClient {
                     + `Errors: ${JSON.stringify(channelData, null, 4)}`
                 );
             }
-        }
-        else if (type === "channels") {
-            channelId = aliases[type][alias];
         }
 
         // Now we have the channel ID, we can send the message.
