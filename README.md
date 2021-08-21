@@ -6,14 +6,13 @@ Send instructions to your Discord account with this skill.
 
 ### Why Discord ?
 
-I don't know, maybe because I'm a
-super creative guy, full of ideas who is
-doing original things. (..- no) ~
+I don't know. :)
 
 ## Intents
 
 - [x] `GetLastMention`: Tells who mentionned you the last time.
 - [x] `LastMentionMarkAsRead`: Mark as read the latest mention you've got.
+- [x] `CreateMessage`: Send a message to a user or a guild text channel mentionned in the aliases.json file.
 
 ## Installation
 
@@ -26,8 +25,8 @@ Then you can run `yarn start` to start the webserver, or
 
 You can follow [this tutorial/template from Replit](https://blog.replit.com/replexa)
 to create your Alexa skill, and replace their repository by mine.
-Copy `.env.sample` to `.env`, adjust it,
-point the skill endpoint to your repl URL,
+Copy `.env.sample` to `.env`, give [your account Discord token](https://gist.github.com/Vexcited/94b9691653195d6ce3b9df6bc8dabe0f),
+give your Alexa Skill ID then point the skill endpoint to your repl URL,
 import intents and enjoy.
 
 ### Intents and languages
@@ -61,13 +60,10 @@ For `channels`, you can give the Channel ID.
 
 ### Example
 
-_You want to get access to your server, a text channel, and a private DM with a friend._
+_You want to get access a text channel in a guild and a private DM with a friend._
 
 ```json
 {
-  "guilds": {
-    "my server": "767772344428265482"
-  },
   "channels": {
     "my server global channel": "837076888744755321"
   },
