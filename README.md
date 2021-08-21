@@ -85,7 +85,7 @@ So you would say something like, `Alexa, open unofficial discord` or `Alexa, ope
 - `Send a message`, or `Send a message to a user|channel` to shortcut the first parameter.
   Then you'll be asked for user|channel alias, then for the message content.
 
-#### Get and mark as read last mention/ping
+#### Read and mark last received mention/ping as read
 
 - `Get my last mention|ping` to read the latest mention you received.
 - `Mark as read my last mention` or `Clear last mention` to mark as read the latest mention you received.
@@ -100,10 +100,10 @@ Vous pourrez dire un truc du style, `Alexa, ouvre discord non officiel`.
 - `Envoie un message`, ou `Envoie un message à un utilisateur|salon` pour éviter de préciser le
   premier paramètre. Vous seront démandés, l'alias de l'utilisateur|du salon, et ensuite le contenu du message.
 
-#### Get and mark as read last mention/ping
+#### Lire et marquer la dernière mention reçue comme lue
 
-- `Get my last mention|ping` to read the latest mention you received.
-- `Mark as read my last mention` or `Clear last mention` to mark as read the latest mention you received.
+- `Lis ma dernière mention|mon dernier ping reçu(e)` pour lire la dernière mention/dernier ping reçu.
+- `Efface la dernière mention` ou `Marque la dernière mention/le dernier ping reçu comme lu(e)` pour marquer comme lu le dernier ping/dernière mention reçu(e).
 
 ## Thanks for reading !
 
