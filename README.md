@@ -14,9 +14,7 @@ I don't know. :)
 - [x] `LastMentionMarkAsRead`: Mark as read the latest mention you've got.
 - [x] `CreateMessage`: Send a message to a user or a guild text channel mentionned in the aliases.json file.
 
-These are basics intents, but in the future I'll **maybe** try to connect to Discord WS, and
-pass Discord calls through the Alexa. (if it's possible, i've seen Alexa.RTC somewhere, i need
-to know more about this...)
+These are basic intents but I'll add more !
 
 ## Installation
 
@@ -112,10 +110,3 @@ Vous pourrez dire un truc du style, `Alexa, ouvre le skill discord non officiel`
 ## Contribute ?
 
 You can contribute if you want ! Everything is in `/src`.
-
-## Thanks for reading !
-
-Hey Replit, hope you'll like this project. When I'll have time, I'll try to finish this
-but actually, with school, homeworks, family, etc... it's a little complicated !
-
-Bye ! - Mikkel / Vexcited.
