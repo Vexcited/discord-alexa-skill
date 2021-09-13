@@ -95,12 +95,12 @@ So you would say something like, `Alexa, open unofficial discord` or `Alexa, ope
 ### French
 
 Nom d'invocation: `a. p. i. discord non officielle` \
-Vous pourrez dire un truc du style, `Alexa, ouvre le skill discord non officiel`.
+Vous pourrez dire un truc du style, `Alexa, ouvre la skill discord non officiel`.
 
 #### Envoyer un message
 
 - `Envoie un message`, ou `Envoie un message à un utilisateur|salon` pour éviter de préciser le
-  premier paramètre. Vous seront démandés, l'alias de l'utilisateur|du salon, et ensuite le contenu du message.
+  premier paramètre. Il vous sera demandé l'alias de l'utilisateur|du salon, et ensuite le contenu du message.
 
 #### Lire et marquer la dernière mention reçue comme lue
 
