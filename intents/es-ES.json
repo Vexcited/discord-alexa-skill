@@ -1,0 +1,212 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "API no oficial de discord",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetLastMentionIntent",
+                    "slots": [],
+                    "samples": [
+                        "obten la ultima mención recivida",
+                        "obten el ultimo ping recivido",
+                        "obten mi ultima mencion recivida",
+                        "obten mi ultimo ping recivido",
+                        "obten la ultima mención",
+                        "obten el ultimo ping",
+                        "obten mi ultima mention",
+                        "obten mi ultimo ping",
+                        "obten el ultimo ping recivido",
+                        "obten la ultima mención recivida",
+                        "obten el ultimo ping",
+                        "obten la ultima mención",
+                        "obten mención",
+                        "obten ping"
+                    ]
+                },
+                {
+                    "name": "LastMentionMarkAsReadIntent",
+                    "slots": [],
+                    "samples": [
+                        "marca como leido my latest received mention",
+                        "marca como leido my latest received ping",
+                        "mark as read my last received mention",
+                        "mark as read my last received ping",
+                        "mark as read latest mention",
+                        "mark as read latest ping",
+                        "mark as read last mention",
+                        "mark as read last ping",
+                        "clear latest mention",
+                        "clear latest ping",
+                        "clear last mention",
+                        "clear last ping"
+                    ]
+                },
+                {
+                    "name": "CreateMessageIntent",
+                    "slots": [
+                        {
+                            "name": "type",
+                            "type": "MessageDestinationType",
+                            "samples": [
+                                "user",
+                                "channel"
+                            ]
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "multipleValues": {
+                                "enabled": false
+                            }
+                        },
+                        {
+                            "name": "content",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "send a message to a {type}",
+                        "send a message",
+                        "send message to a {type}",
+                        "send message",
+                        "create message for {type}",
+                        "create a message for {type}",
+                        "create message",
+                        "create a message"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "MessageDestinationType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "user",
+                                "synonyms": [
+                                    "friend",
+                                    "girl",
+                                    "guy"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "channel"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CreateMessageIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.593451559498"
+                    },
+                    "slots": [
+                        {
+                            "name": "type",
+                            "type": "MessageDestinationType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.593451559498.1194728785278"
+                            }
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": true,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "confirmation": "Confirm.Slot.593451559498.701527985058",
+                                "elicitation": "Elicit.Slot.593451559498.701527985058"
+                            }
+                        },
+                        {
+                            "name": "content",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.593451559498.776954703107"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.593451559498",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Confirm to send {content} to {type} {name} ?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.593451559498.1194728785278",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Do you want to send a message to a channel or a user ?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.593451559498.701527985058",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which {type} would you like to send a message to ?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.593451559498.701527985058",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Do you want to message the {type} {name} ?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.593451559498.776954703107",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "What should the message contain ?"
+                    }
+                ]
+            }
+        ]
+    }
+}
