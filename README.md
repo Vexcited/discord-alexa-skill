@@ -33,7 +33,7 @@ import intents and enjoy.
 
 ### Intents and languages
 
-This skill **supports French and English**.
+This skill **supports French, English and Spanish (BETA)**.
 To import them, go to Assets -> JSON Editor in Alexa,
 go to the `/intents` folder, and import
 the JSON file that you want to Alexa.
