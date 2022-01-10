@@ -47,18 +47,18 @@
                     "name": "LastMentionMarkAsReadIntent",
                     "slots": [],
                     "samples": [
-                        "marca como leido my latest received mention",
-                        "marca como leido my latest received ping",
-                        "mark as read my last received mention",
-                        "mark as read my last received ping",
-                        "mark as read latest mention",
-                        "mark as read latest ping",
-                        "mark as read last mention",
-                        "mark as read last ping",
-                        "clear latest mention",
-                        "clear latest ping",
-                        "clear last mention",
-                        "clear last ping"
+                        "marca como leido la ultima mención recivida",
+                        "marca como leido el ultimo ping recivido",
+                        "marca como leido my last received mention",
+                        "marca como leido my last received ping",
+                        "marca como leido ultima mención",
+                        "marca como leido ultimo ping",
+                        "marca como leido mención",
+                        "marca como leido ping",
+                        "eliminar la ultima mención",
+                        "eliminar el ultimo ping",
+                        "eliminar mi ultima mención",
+                        "eliminar mi ultimo ping"
                     ]
                 },
                 {
@@ -68,8 +68,8 @@
                             "name": "type",
                             "type": "MessageDestinationType",
                             "samples": [
-                                "user",
-                                "channel"
+                                "usuario",
+                                "canal"
                             ]
                         },
                         {
@@ -85,14 +85,18 @@
                         }
                     ],
                     "samples": [
-                        "send a message to a {type}",
-                        "send a message",
-                        "send message to a {type}",
-                        "send message",
-                        "create message for {type}",
-                        "create a message for {type}",
-                        "create message",
-                        "create a message"
+                        "enviar un mensaje a un {type}",
+                        "enviar un mensaje a una {type}",
+                        "enviar un mensaje",
+                        "enviar mensaje a un {type}",
+                        "enviar mensaje a una {type}",
+                        "enviar mensaje",
+                        "crear mensaje para un {type}",
+                        "crear mensaje para una {type}",
+                        "crear un mensaje para un {type}",
+                        "crear un mensaje para una {type}",
+                        "crear mensaje",
+                        "crear un mensaje"
                     ]
                 }
             ],
@@ -102,17 +106,17 @@
                     "values": [
                         {
                             "name": {
-                                "value": "user",
+                                "value": "usuario",
                                 "synonyms": [
-                                    "friend",
-                                    "girl",
-                                    "guy"
+                                    "amigo",
+                                    "chica",
+                                    "persona"
                                 ]
                             }
                         },
                         {
                             "name": {
-                                "value": "channel"
+                                "value": "canal"
                             }
                         }
                     ]
@@ -167,7 +171,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Confirm to send {content} to {type} {name} ?"
+                        "value": "¿Desea enviar {content} a {type} {name}?"
                     }
                 ]
             },
@@ -176,7 +180,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Do you want to send a message to a channel or a user ?"
+                        "value": "¿Desea enviar un mensaje a un usuario o a un canal?"
                     }
                 ]
             },
@@ -185,7 +189,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Which {type} would you like to send a message to ?"
+                        "value": "¿A que {type} desearia enviar el mensaje?"
                     }
                 ]
             },
@@ -194,7 +198,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "Do you want to message the {type} {name} ?"
+                        "value": "¿Desea enviar un mensaje a {type} {name} ?"
                     }
                 ]
             },
@@ -203,7 +207,7 @@
                 "variations": [
                     {
                         "type": "PlainText",
-                        "value": "What should the message contain ?"
+                        "value": "¿Que deberia contener el mensaje?"
                     }
                 ]
             }
