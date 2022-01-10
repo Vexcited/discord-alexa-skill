@@ -1,0 +1,216 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "API no oficial de discord",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "GetLastMentionIntent",
+                    "slots": [],
+                    "samples": [
+                        "obten la ultima mención recivida",
+                        "obten el ultimo ping recivido",
+                        "obten mi ultima mencion recivida",
+                        "obten mi ultimo ping recivido",
+                        "obten la ultima mención",
+                        "obten el ultimo ping",
+                        "obten mi ultima mention",
+                        "obten mi ultimo ping",
+                        "obten el ultimo ping recivido",
+                        "obten la ultima mención recivida",
+                        "obten el ultimo ping",
+                        "obten la ultima mención",
+                        "obten mención",
+                        "obten ping"
+                    ]
+                },
+                {
+                    "name": "LastMentionMarkAsReadIntent",
+                    "slots": [],
+                    "samples": [
+                        "marca como leido la ultima mención recivida",
+                        "marca como leido el ultimo ping recivido",
+                        "marca como leido my last received mention",
+                        "marca como leido my last received ping",
+                        "marca como leido ultima mención",
+                        "marca como leido ultimo ping",
+                        "marca como leido mención",
+                        "marca como leido ping",
+                        "eliminar la ultima mención",
+                        "eliminar el ultimo ping",
+                        "eliminar mi ultima mención",
+                        "eliminar mi ultimo ping"
+                    ]
+                },
+                {
+                    "name": "CreateMessageIntent",
+                    "slots": [
+                        {
+                            "name": "type",
+                            "type": "MessageDestinationType",
+                            "samples": [
+                                "usuario",
+                                "canal"
+                            ]
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "multipleValues": {
+                                "enabled": false
+                            }
+                        },
+                        {
+                            "name": "content",
+                            "type": "AMAZON.SearchQuery"
+                        }
+                    ],
+                    "samples": [
+                        "enviar un mensaje a un {type}",
+                        "enviar un mensaje a una {type}",
+                        "enviar un mensaje",
+                        "enviar mensaje a un {type}",
+                        "enviar mensaje a una {type}",
+                        "enviar mensaje",
+                        "crear mensaje para un {type}",
+                        "crear mensaje para una {type}",
+                        "crear un mensaje para un {type}",
+                        "crear un mensaje para una {type}",
+                        "crear mensaje",
+                        "crear un mensaje"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "MessageDestinationType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "usuario",
+                                "synonyms": [
+                                    "amigo",
+                                    "chica",
+                                    "persona"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "canal"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "CreateMessageIntent",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.593451559498"
+                    },
+                    "slots": [
+                        {
+                            "name": "type",
+                            "type": "MessageDestinationType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.593451559498.1194728785278"
+                            }
+                        },
+                        {
+                            "name": "name",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": true,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "confirmation": "Confirm.Slot.593451559498.701527985058",
+                                "elicitation": "Elicit.Slot.593451559498.701527985058"
+                            }
+                        },
+                        {
+                            "name": "content",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.593451559498.776954703107"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.593451559498",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿Desea enviar {content} a {type} {name}?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.593451559498.1194728785278",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿Desea enviar un mensaje a un usuario o a un canal?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.593451559498.701527985058",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿A que {type} desearia enviar el mensaje?"
+                    }
+                ]
+            },
+            {
+                "id": "Confirm.Slot.593451559498.701527985058",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿Desea enviar un mensaje a {type} {name} ?"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.593451559498.776954703107",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "¿Que deberia contener el mensaje?"
+                    }
+                ]
+            }
+        ]
+    }
+}
