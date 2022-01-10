@@ -3,17 +3,7 @@
  * @param {string} text - The text to clean
  */
 const fixSSMLContent = (text) => {
-    let newText = text;
-
-    // Symbols to escape.
-    const symols = ["<", ">"];
-
-    // Escape symbols.
-    symols.forEach(symbol => {
-        newText = newText.replace(new RegExp(symbol, "g"), `\\${symbol}`);
-    });
-
-    return newText;
+    return text.replace(/[<>]/g, c => `\\${c}`);
 }
 
 module.exports = fixSSMLContent;
