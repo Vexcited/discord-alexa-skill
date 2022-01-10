@@ -1,0 +1,44 @@
+{
+    "LaunchRequest": {
+        "speechText": "¡¡Bienvenido {username} al no-oficial Discord API Skill!!",
+        "repromptText": "{username}, puedes preguntarme lo que sea, tal vez tu ultima mención.",
+        "simpleCardText": "¡Preguntame lo que sea!"
+    },
+    "HelpHandler": {
+        "speechText": "Puedes preguntarme por tu ultima mención y marcarla como leida, o ¡enviar un mensaje a alguien definido en el archivo \"aliases\"!",
+        "simpleCardTitle": "Ayuda"
+    },
+    "ErrorHandler": {
+        "speechText": "Un error ha ocurrido, ¿puede decir su comando otra vez?"
+    },
+    "CancelAndStopHandler": {
+        "speechText": "'Hasta la proxima en Discord!",
+        "simpleCardTitle": "¡Adiós!"
+    },
+    "GetLastMentionIntent": {
+        "speechText": "Su ultima mencion fue el {mentionDate} por {mentionAuthor}. El contenido de el mensaje es \"{mentionContent}\". Diga \"marcar ultima mención como leida\" para marcarla como leida.",
+        "simpleCardTitle": "Su ultima mención"
+    },
+    "LastMentionMarkAsReadIntent": {
+        "success": {
+            "speechText": "¡La ultima mención de {mentionAuthor} ha sido marcada como leida!",
+            "simpleCardTitle": "Mención marcada como leida",
+            "simpleCardText": "Mención de {mentionAuthor} marcada como leida."
+        },
+        "error": {
+            "speechText": "Lo siento, no he podido marcar su ultima mención como leida",
+            "simpleCardTitle": "Un error ha ocurrido"
+        }
+    },
+    "CreateMessageIntent": {
+        "success": {
+            "speechText": "¡Su mensaje ha sido enviado a {messageDestination}!",
+            "simpleCardTitle": "¡Mensaje enviado!",
+            "simpleCardText": "Mensaje enviado a {messageDestination}."
+        },
+        "error": {
+            "speechText": "Lo siento, no pude enviar su mensaje a {messageDestination} !",
+            "simpleCardTitle": "Un error ha ocurrido"
+        }
+    }
+}
