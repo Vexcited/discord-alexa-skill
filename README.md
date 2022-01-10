@@ -33,7 +33,7 @@ import intents and enjoy.
 
 ### Intents and languages
 
-This skill **supports French and English**.
+This skill **supports French, English and Spanish (BETA)**.
 To import them, go to Assets -> JSON Editor in Alexa,
 go to the `/intents` folder, and import
 the JSON file that you want to Alexa.
@@ -106,6 +106,20 @@ Vous pourrez dire un truc du style, `Alexa, ouvre la skill discord non officiel`
 
 - `Lis ma dernière mention|mon dernier ping reçu(e)` pour lire la dernière mention/dernier ping reçu.
 - `Efface la dernière mention` ou `Marque la dernière mention/le dernier ping reçu comme lu(e)` pour marquer comme lu le dernier ping/dernière mention reçu(e).
+
+### Spanish
+
+Nombre invocatorio: `API no oficial de discord` (pronunciar API por letras) \
+Por lo que dirias algo como: `Alexa, abre API no oficial de discord`.
+
+#### Enviar un mensaje
+
+- `Enviar un mensaje`, o `Enviar un mensaje a un usuario|canal` para evitar indicar el primer parametro. Despues le perguntaran por un alias de un usuario|canal, y despues el contenido del mensaje.
+
+#### Leer y marcar como leido la ultima mencion/ping como leido
+
+- `Obten mi ultima mención` o `Obten mi ultimo ping` para que Alexa te lea la ultima mención que recibió.
+- `Marca como leido mi ultima|ultimo mención|ping` o `Eliminar mi ultima|o mención|ping`
 
 ## Contribute ?
 
